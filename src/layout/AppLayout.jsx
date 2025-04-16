@@ -10,13 +10,13 @@ import { Link, Outlet } from "react-router-dom";
 const AppLayout = () => {
   return (
     <div className="main-navbar">
-      <Navbar expand="lg" className="bg-body-tertiary custom-navbar" data-bs-theme="dark">
+      <Navbar expand="lg" className="custom-navbar" data-bs-theme="dark">
         <Container fluid>
           <Navbar.Brand href="#">
             <img
               src="https://static.vecteezy.com/system/resources/previews/029/337/390/non_2x/netflix-logo-black-background-free-vector.jpg"
               width="100"
-              height="80"
+              height="65"
               className="d-inline-block align-top"
               alt="Netflix logo"
             />

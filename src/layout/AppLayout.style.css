@@ -1,11 +1,11 @@
 .main-navbar {
     width: 100vw;
-    height: 80px;
+    height: 65px;
     padding: 0;
 }
 
 .custom-navbar {
-    background-color: black !important;  /* 진짜 블랙 */
+    background-color: black !important;
     color: white !important;
     padding: 0.5rem 1rem;
 }
@@ -15,5 +15,5 @@
 }
 
 .custom-navbar .nav-link:hover {
-    font-size: 1.1em;
+    font-weight: 700;
 }
