@@ -2,6 +2,7 @@ import React from "react";
 import './MovieCard.style.css';
 import { Badge } from "react-bootstrap";
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
 
 const getStars = (rating) => {
     const fullStars = Math.floor(rating / 2);
@@ -18,6 +19,20 @@ const getStars = (rating) => {
   };
 
 const MovieCard = ({ movie }) => {
+
+  const {data:genreData} = useMovieGenreQuery(); // 여러 개의 카드가 있지만, 한 번만 호출
+
+  const showGenre = (genreIdList) => {
+    if(!genreIdList) return [];
+
+    const genreNameList = genreIdList.map((id)=>{
+      const genreObj = genreData.find((genre) => genre.id === id)
+      return genreObj.name;
+    })
+
+    return genreNameList
+  }
+  
   return (
     <div
       style={{
@@ -30,8 +45,8 @@ const MovieCard = ({ movie }) => {
     >
       <div className="overlay"> 
         <div className="movie-title">{movie.title}</div>
-        {movie.genre_ids.map((id) => (
-          <Badge bg="danger" className="m-1">{id}</Badge>
+        {showGenre(movie.genre_ids).map((id) => (
+          <Badge bg="danger" className="me-1">{id}</Badge>
         ))}
         <div>
             <div>{getStars(movie.vote_average)} ({movie.vote_average.toFixed(1)})</div>
