@@ -1,0 +1,31 @@
+/* styles.css 또는 전역 스타일 */
+.pagination {
+    display: flex;
+  }
+  
+  .page-item .page-link {
+    color: red;
+    border: 1px solid red;
+    padding: 0.5rem 0.75rem;
+    background-color: black;
+  }
+  
+  .page-item.active .page-link {
+    background-color: red;
+    color: white;
+    border-color: red;
+  }
+  
+  .page-item .page-link:hover {
+    background-color: white;
+    border: 1px solid red;
+    color: darkred;
+  }
+
+  @media (max-width: 576px) {
+    .page-item .page-link {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+  

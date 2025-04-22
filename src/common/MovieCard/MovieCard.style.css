@@ -18,6 +18,16 @@
     padding: 15px;
 }
 
+.movie-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;  /* 보여줄 줄 수 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+    color: white;
+  }
+
 .overlay:hover {
     opacity: 1;
 }

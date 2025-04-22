@@ -3,6 +3,7 @@ import './MovieCard.style.css';
 import { Badge } from "react-bootstrap";
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { useMovieGenreQuery } from "../../hooks/useMovieGenre";
+import { useNavigate } from "react-router-dom";
 
 const getStars = (rating) => {
     const fullStars = Math.floor(rating / 2);
@@ -21,6 +22,7 @@ const getStars = (rating) => {
 const MovieCard = ({ movie }) => {
 
   const {data:genreData} = useMovieGenreQuery(); // 여러 개의 카드가 있지만, 한 번만 호출
+  const navigate = useNavigate();
 
   const showGenre = (genreIdList) => {
     if(!genreIdList) return [];
@@ -32,7 +34,11 @@ const MovieCard = ({ movie }) => {
 
     return genreNameList
   }
-  
+
+  const goToDetailPage = (event) => {
+    navigate(`/movies/${movie.id}`);
+  };
+
   return (
     <div
       style={{
@@ -42,6 +48,7 @@ const MovieCard = ({ movie }) => {
           ")",
       }}
       className="movie-card"
+      onClick={goToDetailPage}
     >
       <div className="overlay"> 
         <div className="movie-title">{movie.title}</div>
