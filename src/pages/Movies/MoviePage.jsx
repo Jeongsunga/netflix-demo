@@ -25,8 +25,13 @@ const MoviePage = () => {
 
   const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page });
 
-  const handlePageClick = ({selected}) => {
-    setPage(selected + 1)
+  const handlePageClick = ({ selected }) => {
+    const nextPage = selected + 1;
+    if (nextPage <= 500) {
+      setPage(nextPage);
+    } else {
+      alert("최대 500페이지까지만 조회할 수 있습니다.");
+    }
   };
 
   if (isLoading) {
@@ -59,7 +64,7 @@ const MoviePage = () => {
             onPageChange={handlePageClick}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
-            pageCount={data?.total_pages}  // 전체 페이지
+            pageCount={Math.min(data?.total_pages ?? 0, 500)}
             previousLabel="< previous"
             pageClassName="page-item"
             pageLinkClassName="page-link"
